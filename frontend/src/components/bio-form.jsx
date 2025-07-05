@@ -49,9 +49,6 @@ function BioForm() {
     },
   });
 
-  const downloadQRCode = () => {
-    FileSaver.saveAs(qrCode, "bio-qr.png");
-  };
 
   return (
     <div className="container mt-5">
