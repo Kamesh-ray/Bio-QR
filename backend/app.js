@@ -14,7 +14,7 @@ app.use(express.json());
 // Mount Routes
 app.use("/api/auth", authRoutes);
 app.use("/api", qrRoutes);
-router.post('/generate-qrcode', verifyToken, generateQr);
+app.post('/generate-qrcode', verifyToken, generateQr);
 
 // Optional base route to check if server is working
 app.get("/", (req, res) => {

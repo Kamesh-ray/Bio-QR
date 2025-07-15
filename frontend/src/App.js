@@ -9,18 +9,18 @@ import Signup from './pages/SignUp';
 function App() {
   return (
  <BrowserRouter>
-      {/* <Routes>
+      <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route
           path="/bio-form"
           element={
-            <PrivateRoute> */}
+            <PrivateRoute>
               <BioForm />
-            {/* </PrivateRoute>
+            </PrivateRoute>
           }
         />
-      </Routes> */}
+      </Routes>
     </BrowserRouter>
   );
 }
