@@ -1,12 +1,14 @@
-// src/pages/Login.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
+import Footer from '../components/Footer';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Login() {
   const [form, setForm] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -29,6 +31,10 @@ function Login() {
     }
   };
 
+ const togglePassword = () => {
+    setShowPassword((prev) => !prev);
+  };
+
   return (
     <div className="container mt-5">
       <div className="row justify-content-center">
@@ -48,16 +54,25 @@ function Login() {
                     required
                   />
                 </div>
-                <div className="mb-3">
-                  <label className="form-label">Password</label>
-                  <input
-                    name="password"
-                    type="password"
-                    className="form-control"
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
+                <div className="mb-3 position-relative">
+      <label className="form-label">Password</label>
+      <div className="input-group">
+        <input
+          name="password"
+          type={showPassword ? "text" : "password"}
+          className="form-control"
+          onChange={handleChange}
+          required
+        />
+        <span
+          className="input-group-text"
+          onClick={togglePassword}
+          style={{ cursor: "pointer" ,background: "transparent", border: "none", border:""}}
+        >
+          {showPassword ? <FaEyeSlash /> : <FaEye />}
+        </span>
+      </div>
+    </div>
                 <button
                   type="submit"
                   className="btn btn-primary w-100"
@@ -76,6 +91,7 @@ function Login() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

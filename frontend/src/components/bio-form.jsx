@@ -6,6 +6,7 @@ import { useFormik, FieldArray, FormikProvider } from "formik";
 import * as Yup from "yup";
 import FileSaver from "file-saver";
 import "../style/BioForm.css";
+import Footer from "./Footer";
 
 const validationSchema = Yup.object({
   name: Yup.string().matches(/^[a-zA-Z ]+$/, "Only letters allowed").required("Required"),
@@ -215,8 +216,17 @@ function BioForm() {
 </div>
 
           </div>
+
         </div>
       )}
+      {submittedBio && (
+        <div className="mt-4">
+          <h4>Submitted Bio Data:</h4>
+          <pre>{JSON.stringify(submittedBio, null, 2)}</pre>
+        </div>
+      )}
+
+      <Footer/>
     </div>
   );
 }
