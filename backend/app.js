@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
 const infoRoutes = require("./routes/infoRoutes"); // adjust path if needed
 app.use("/api", infoRoutes);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3306;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
