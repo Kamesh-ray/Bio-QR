@@ -90,10 +90,10 @@ function Signup() {
                      </div>
                    </div>
                <div className="mb-3 position-relative">
-                    <label className="form-label">Password</label>
+                    <label className="form-label">Confirm Password</label>
                     <div className="input-group">
                       <input
-                        name="password"
+                        name="confirmPassword"
                         type={showPassword ? "text" : "password"}
                         className="form-control"
                         onChange={handleChange}
