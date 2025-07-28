@@ -83,7 +83,7 @@ function Signup() {
                        <span
                          className="input-group-text"
                          onClick={togglePassword}
-                         style={{ cursor: "pointer" ,background: "transparent", border: "none", border:""}}
+                         style={{ cursor: "pointer" ,background: "transparent", border: "none"}}
                        >
                          {showPassword ? <FaEyeSlash /> : <FaEye />}
                        </span>
@@ -102,7 +102,7 @@ function Signup() {
                       <span
                         className="input-group-text"
                         onClick={togglePassword}
-                        style={{ cursor: "pointer" ,background: "transparent", border: "none", border:""}}
+                        style={{ cursor: "pointer" ,background: "transparent", border: "none"}}
                       >
                         {showPassword ? <FaEyeSlash /> : <FaEye />}
                       </span>

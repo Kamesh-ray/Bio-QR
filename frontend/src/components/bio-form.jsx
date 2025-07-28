@@ -1,10 +1,8 @@
-// Enhanced BioForm.jsx using Formik, Yup and QR save/download options
-
 import React, { useState } from "react";
 import axios from "axios";
 import { useFormik, FieldArray, FormikProvider } from "formik";
 import * as Yup from "yup";
-import FileSaver from "file-saver";
+// import FileSaver from "file-saver";
 import "../style/BioForm.css";
 import Footer from "./Footer";
 
@@ -21,34 +19,45 @@ function BioForm() {
   const [qrCode, setQrCode] = useState("");
   const [submittedBio, setSubmittedBio] = useState(null);
 
-  const formik = useFormik({
-    initialValues: {
-      name: "",
-      age: "",
-      email: "",
-      phone: "",
-      role: "",
-      address: "",
-      qualification: "",
-      skills: "",
-      tools: "",
-      description: "",
-      others: "",
-      projects: [""],
-      experience: [""],
-      education: [""],
-    },
-    validationSchema,
-    onSubmit: async (values) => {
-      try {
-        const res = await axios.post("https://bioqr-backend-api.onrender.com/api/generate-qrcode", values);
-        setQrCode(res.data.qrCode);
-        setSubmittedBio(res.data.bio);
-      } catch (error) {
-        console.error("QR generation failed:", error);
-      }
-    },
-  });
+ const formik = useFormik({
+  initialValues: {
+    name: "",
+    age: "",
+    email: "",
+    phone: "",
+    role: "",
+    address: "",
+    qualification: "",
+    skills: "",
+    tools: "",
+    description: "",
+    others: "",
+    projects: [""],
+    experience: [""],
+    education: [""],
+  },
+  validationSchema,
+  onSubmit: async (values) => {
+    try {
+      const res = await axios.post(
+        "https://bioqr-backend-api.onrender.com/api/generate-qrcode",
+        values,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            // If you use token-based auth, include the token like this:
+            // Authorization: `Bearer ${token}`
+          },
+        }
+      );
+      setQrCode(res.data.qrCode);
+      setSubmittedBio(res.data.bio);
+    } catch (error) {
+      console.error("QR generation failed:", error);
+    }
+  },
+});
+
 
 
   return (
@@ -214,7 +223,6 @@ function BioForm() {
     📋 Copy QR Link
   </button>
 </div>
-
           </div>
 
         </div>
