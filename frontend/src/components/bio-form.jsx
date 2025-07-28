@@ -41,7 +41,7 @@ function BioForm() {
     validationSchema,
     onSubmit: async (values) => {
       try {
-        const res = await axios.post("http://localhost:5000/api/generate-qrcode", values);
+        const res = await axios.post("https://bioqr-backend-api.onrender.com/api/generate-qrcode", values);
         setQrCode(res.data.qrCode);
         setSubmittedBio(res.data.bio);
       } catch (error) {
