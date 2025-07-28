@@ -45,8 +45,6 @@ function BioForm() {
         {
           headers: {
             "Content-Type": "application/json",
-            // If you use token-based auth, include the token like this:
-            // Authorization: `Bearer ${token}`
           },
         }
       );
